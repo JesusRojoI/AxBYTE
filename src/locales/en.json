@@ -1,0 +1,555 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "success": "Operation successful",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "accept": "Accept",
+    "send": "Send",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "required": "Required",
+    "optional": "optional",
+    "yes": "Yes",
+    "no": "No",
+    "undo": "Undo?",
+    "currency": "MXN",
+    "vat": "VAT",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "quantity": "Quantity",
+    "price": "Price"
+  },
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "customize": "Customize",
+    "contact": "Contact",
+    "hire": "Hire",
+    "cart": "Cart",
+    "language": "Language"
+  },
+  "footer": {
+    "tagline": "We drive brands into the future by blending creativity with advanced digital strategy.",
+    "office": "Our Office",
+    "address": "Gustavo Baz Prada 166, Piso1 Int. 101, Ofi. 101-a,\nColonia La Escuela, C.p. 54090,\nTlanepantla De Baz, Estado De México, México",
+    "email": "soluciones@axbyte.com.mx",
+    "phone": "55 5310 2465",
+    "privacy": "Privacy Notice",
+    "terms": "Terms and Conditions",
+    "returns": "Return and Refund Policy",
+    "rights": "AxBYTE Creative Solutions @2023. All Rights Reserved.",
+    "acceptPayments": "We accept Visa, MasterCard and American Express"
+  },
+  "home": {
+    "hero": {
+      "title": "AxBYTE Creative Solutions",
+      "description": "At AxBYTE Creative Solutions, excellence drives every project. From memorable logos to elegant websites and successful ad campaigns, we aim to exceed both your expectations and ours.",
+      "contactBtn": "Contact Us",
+      "servicesBtn": "Our Services"
+    },
+    "services": {
+      "title": "Services",
+      "description": "Our service offering spans a broad spectrum: from graphic design and web development to digital marketing strategies and brand consulting. Every solution is tailored to your specific needs and business goals.",
+      "viewAll": "View services"
+    },
+    "digitalize": {
+      "title": "Digitalize",
+      "subtitle": "We build stronger digital experiences.",
+      "button": "Contact Us"
+    },
+    "creative": {
+      "title": "Creative design",
+      "description": "We elevate your brand with innovative, results-driven digital marketing strategies designed to stand out online.",
+      "smart": {
+        "title": "Smart brand",
+        "description": "We strengthen your identity with brand intelligence, ensuring impact and relevance in the digital market."
+      },
+      "marketing": {
+        "title": "Effective marketing",
+        "description": "We amplify your reach with effective commercial tactics that secure results and sustainable growth."
+      },
+      "payments": "Secure and reliable payments."
+    },
+    "portfolio": {
+      "title": "Featured works",
+      "link": "Portfolio"
+    },
+    "trust": {
+      "title": "We build and boost your company's digital presence",
+      "description": "We develop and elevate your online identity, ensuring a solid and competitive digital presence.",
+      "subtitle": "Trusted by thousands of clients",
+      "button": "Contact"
+    },
+    "process": {
+      "step1": {
+        "title": "Market Research",
+        "description": "We conduct in-depth market analysis to guide your business decisions with accurate, relevant information."
+      },
+      "step2": {
+        "title": "Product Development",
+        "description": "We conceive and refine innovative products that capture the essence and needs of today's market."
+      },
+      "step3": {
+        "title": "Marketing Strategy",
+        "description": "We design precise, effective marketing tactics to launch your business into the digital market."
+      }
+    },
+    "cta": {
+      "title": "Level up your business!",
+      "description": "Take your company to success with innovative strategies, expert guidance and tailor-made digital solutions.",
+      "button": "Contact Us"
+    },
+    "hire": "Hire",
+    "otros": {
+      "title": "Other services",
+      "items": {
+        "asesoria": "Marketing Strategy Consulting",
+        "packagingSost": "Sustainable Packaging Design",
+        "traduccion": "Content Translation",
+        "apps": "Mobile App Design",
+        "ux": "User Experience (UX) Consulting"
+      }
+    }
+  },
+  "shop": {
+    "title": "Services Shop",
+    "subtitle": "Comprehensive services that boost your business vision.",
+    "filters": "Services",
+    "showing": "Showing {from}–{to} of {total} results",
+    "sortBy": "Sort by",
+    "sortOptions": {
+      "default": "Default sorting",
+      "popularity": "Sort by popularity",
+      "newest": "Sort by latest",
+      "priceDesc": "Sort by price: high to low",
+      "priceAsc": "Sort by price: low to high"
+    },
+    "category": {
+      "graphic": "Graphic Design",
+      "web": "Website Design",
+      "marketing": "Digital Marketing",
+      "print": "Print Material Design",
+      "brand": "Brand Design",
+      "multimedia": "Multimedia Production",
+      "other": "Other Services"
+    },
+    "vatLabel": "MXN +VAT",
+    "addToCart": "Add to cart",
+    "added": "Added!",
+    "relatedProducts": "Related Products",
+    "includes": "INCLUDES:",
+    "features": "Features:"
+  },
+  "customize": {
+    "tag": "Stay connected",
+    "title": "Customize",
+    "description": "Your success drives us. We handle every project with meticulous care and believe in open, ongoing communication. We listen to your ideas and needs, and collaborate with you at every step.",
+    "email": "Email address",
+    "quoteId": "Quote ID",
+    "amount": "Amount to pay (MXN)",
+    "submit": "Send",
+    "successTitle": "Quote sent!",
+    "successMsg": "Your quote was added to the cart successfully.",
+    "errorTitle": "Error sending",
+    "errorMsg": "We couldn't process your quote. Please try again.",
+    "goToCart": "Go to cart"
+  },
+  "contact": {
+    "tag": "Stay connected",
+    "title": "Contact",
+    "description": "Your success drives us. We handle every project with meticulous care and believe in open, ongoing communication. We listen to your ideas and needs, and collaborate with you at every step.",
+    "emailTitle": "Email",
+    "emailDesc": "Connect with us: send us an email and we'll get back to you shortly.",
+    "phoneTitle": "Call Us",
+    "phoneDesc": "For immediate assistance, call now and one of our experts will assist you personally.",
+    "formName": "Name",
+    "formLastName": "Last Name",
+    "formEmail": "Email address",
+    "formMessage": "Comment or message",
+    "formSubmit": "Send",
+    "formSuccessTitle": "Message sent!",
+    "formSuccessMsg": "We received your message and will get in touch with you soon.",
+    "formErrorTitle": "Error sending",
+    "formErrorMsg": "We couldn't send your message. Please try again.",
+    "findUs": "Contact Us",
+    "findUsDesc": "We're ready to guide you. Find us, call us or write to us, and together we'll grow your project.",
+    "office": "Our Office",
+    "hours": "Monday to Friday",
+    "hoursTime": "9:00 am - 6:00 pm"
+  },
+  "about": {
+    "title": "Who are we?",
+    "tag": "About Us",
+    "subtitle": "We drive brands with passion and strategy, connecting businesses to success in the digital era.",
+    "oneStop": "One-stop digital services",
+    "allServices": "All services",
+    "aboutTag": "About",
+    "paragraph1": "At AxBYTE Creative Solutions we unlock the creative and strategic potential of your business. We are a design and marketing agency that delivers innovative, effective solutions to fuel each client's success.",
+    "paragraph2": "Our mission is simple, yet ambitious: turn your vision into reality. We understand that every business is unique and we work tirelessly to grasp your goals, values and challenges.",
+    "paragraph3": "By blending creativity with analysis, we design tailored campaigns that resonate with your audience. Our team combines visionaries and technicians: artists and analysts who build your brand's narrative. With advanced tools and a fresh perspective, we launch campaigns that capture the essence of your offering.",
+    "impactTitle": "Maximize Your Digital Impact and Elevate Your Brand",
+    "impactDesc": "Boost your online presence and strengthen your brand identity: personalized strategies for unprecedented reach, constant innovation and verifiable results. Turn every click into customers.",
+    "trusted": "Trusted by thousands of clients",
+    "contactBtn": "Contact"
+  },
+  "cart": {
+    "title": "Cart",
+    "remove": "Remove item",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "total": "Cart total",
+    "checkout": "Checkout",
+    "empty": "Your cart is empty",
+    "emptyDesc": "Explore our shop and find the perfect service for you.",
+    "emptyBtn": "Go to shop",
+    "removed": "removed"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "billing": "Billing details",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "company": "Company name",
+    "country": "Country/Region",
+    "address": "Street address",
+    "addressPlaceholder": "House number and street name",
+    "address2": "Apartment, suite, unit, etc.",
+    "city": "Town / City",
+    "state": "State / County",
+    "postalCode": "Postal code",
+    "phone": "Phone",
+    "email": "Email address",
+    "additional": "Additional information",
+    "orderNotes": "Order notes",
+    "orderNotesPlaceholder": "Additional order details, address references, etc.",
+    "yourOrder": "Your order",
+    "creditCard": "Credit or debit card.",
+    "cardData": "Card details",
+    "cardName": "Name on card",
+    "cardNamePlaceholder": "Full name",
+    "cardNumber": "Card number",
+    "expiry": "Expiry date",
+    "cvv": "Security code",
+    "secure": "Secure payment",
+    "privacyText": "We'll use your personal data to process the order, improve your experience on the site, and for other purposes described in our",
+    "privacyLink": "privacy policy",
+    "termsText": "I have read and accept the website's terms and conditions",
+    "termsLink": "terms and conditions",
+    "placeOrder": "Place order",
+    "processing": "Processing payment..."
+  },
+  "success": {
+    "title": "Purchase successful!",
+    "subtitle": "Thank you for trusting AxBYTE Creative Solutions.",
+    "orderSummary": "Order summary",
+    "transaction": "Transaction",
+    "emailSent": "We've sent a confirmation email to your address.",
+    "continueShopping": "Continue Shopping"
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "relatedProducts": "Related Products",
+    "includes": "INCLUDES:",
+    "features": "Features:",
+    "quantity": "Quantity"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Notice",
+    "termsTitle": "Terms and Conditions",
+    "returnsTitle": "Return and Refund Policy",
+    "comingSoon": "This page's content will be available very soon.",
+    "contact": "For any questions, write to us at"
+  },
+  "email": {
+    "contact": {
+      "subject": "New contact message - AxBYTE",
+      "fwdSubject": "[FWD] New contact message - AxBYTE",
+      "confirmSubject": "Message received - AxBYTE",
+      "title": "New contact message",
+      "confirmTitle": "Message received",
+      "name": "Name",
+      "company": "Company",
+      "phone": "Phone",
+      "message": "Message",
+      "greeting": "Hello",
+      "confirmBody": "We received your message and will get in touch with you soon."
+    },
+    "quote": {
+      "subject": "New custom quote - AxBYTE",
+      "fwdSubject": "[FWD] New custom quote - AxBYTE",
+      "confirmSubject": "Quote received - AxBYTE",
+      "title": "New custom quote",
+      "confirmTitle": "Quote received",
+      "quoteId": "Quote ID",
+      "amount": "Amount",
+      "email": "Email",
+      "greeting": "Hello",
+      "confirmBody": "We received your quote request and added it to your cart."
+    },
+    "purchase": {
+      "subject": "Purchase confirmed! - AxBYTE",
+      "fwdSubject": "[FWD] New purchase - AxBYTE",
+      "title": "Purchase confirmed!",
+      "fwdTitle": "New purchase",
+      "orderSummary": "Order summary",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "vat": "VAT",
+      "total": "Total",
+      "coupon": "Coupon used",
+      "transaction": "Transaction",
+      "thanks": "Thank you for your purchase at",
+      "customer": "Customer"
+    }
+  },
+  "services": {
+    "asesoriaEstrategia": {
+      "name": "Marketing Strategy Consulting",
+      "desc": "Personalized consulting to boost your conversions.",
+      "i1": "Market Analysis",
+      "i2": "Objective Definition",
+      "i3": "Target audience analysis and customer profile creation.",
+      "i4": "2 strategies to attract and retain different segments.",
+      "i5": "Creation of 5 key messages and value propositions.",
+      "i6": "Recommendations on the most effective marketing channels (digital, social, traditional).",
+      "i7": "Suggestions on content types (blogs, videos, social media).",
+      "i8": "2 strategies to optimize return on investment (ROI)."
+    },
+    "consultoriaMarca": {
+      "name": "Brand Consulting",
+      "desc": "We develop a solid brand strategy.",
+      "i1": "Brand Analysis",
+      "i2": "Creation or review of mission, vision, and values.",
+      "i3": "Design of 2 logos and color palettes.",
+      "i4": "1 strategy to define brand perception in the market.",
+      "i5": "1 strategy to launch or relaunch the brand."
+    },
+    "consultoriaUx": {
+      "name": "User Experience (UX) Consulting",
+      "desc": "Improve usability and user satisfaction on your website or application.",
+      "i1": "User Research",
+      "i2": "Evaluation of the ease of use of an existing product.",
+      "i3": "Identification of usability issues through user testing.",
+      "i4": "Creation of 2 user profiles (personas) to represent different segments of the target audience.",
+      "i5": "Development of 2 interactive prototypes for testing and validation.",
+      "i6": "Suggestions on interface and behavioral elements.",
+      "i7": "Consulting on the integration of changes in the development process."
+    },
+    "disenoApps": {
+      "name": "Mobile App Design",
+      "desc": "Development of custom mobile applications.",
+      "i1": "Identification of user needs and behaviors.",
+      "i2": "Specification of the features and characteristics the app should have.",
+      "i3": "Development of user flows and information architecture.",
+      "i4": "Visual design of the interface, including colors, typography, and graphics.",
+      "i5": "Validation of navigation and functionality before development.",
+      "i6": "User testing execution to obtain feedback on the design.",
+      "i7": "Creation of a style guide including design guidelines.",
+      "i8": "Adaptation to platform design guidelines (iOS, Android).",
+      "i9": "Analysis of performance and user experience after launch.",
+      "i10": "Recommendations for future improvements or updates."
+    },
+    "disenoBanners": {
+      "name": "Web Banner Design",
+      "desc": "Eye-catching banners for your website or advertising campaigns.",
+      "f1": "Size and Format Definition",
+      "f2": "Attractive Design",
+      "f3": "Call to Action (CTA)",
+      "f4": "Digital Format",
+      "f5": "Performance Measurement"
+    },
+    "disenoCamisetas": {
+      "name": "T-shirt Design",
+      "desc": "Unique designs for custom t-shirts.",
+      "i1": "1 unique design for t-shirt printing, based on the client's request, including custom colors.",
+      "i2": "Delivered in digital format."
+    },
+    "disenoCatalogos": {
+      "name": "Digital Catalog Design",
+      "desc": "Professional catalogs to showcase your products.",
+      "i1": "Analysis of the target audience and their needs.",
+      "i2": "Selection of products or services to include (up to 15 products).",
+      "i3": "Creation of an index or table of contents.",
+      "i4": "Design of the catalog's front and back cover.",
+      "i5": "Integration of high-quality product images.",
+      "i6": "Contact information and buttons that invite action (buy, visit website).",
+      "i7": "Incorporation of new offers or products as needed.",
+      "i8": "Preparation of the catalog for print (resolution, bleeds) or digital format (interactive PDF).",
+      "i9": "Delivered in digital format."
+    },
+    "disenoFolletos": {
+      "name": "Digital Brochure Design",
+      "desc": "We design attractive brochures to promote your products or services.",
+      "i1": "Identification of the target audience and their needs.",
+      "i2": "Writing clear and concise text.",
+      "i3": "Inclusion of descriptions of products, services, or events.",
+      "i4": "Contact information and calls to action.",
+      "i5": "Creation of an attractive and easy-to-follow visual scheme.",
+      "i6": "Selection of high-quality images that complement the content.",
+      "i7": "Design in a format that adapts well to different devices (PC, tablet, mobile).",
+      "i8": "Delivered in digital format."
+    },
+    "disenoIdentidad": {
+      "name": "Visual Identity Design",
+      "desc": "Creation of cohesive visual elements for your brand.",
+      "i1": "Analysis of the brand's mission, vision, and values.",
+      "i2": "Market and competitor research.",
+      "i3": "Creation of a unique and recognizable logo that reflects the brand's essence. 2 variants to choose from.",
+      "i4": "Development of a visual identity manual including guidelines on logo use, colors, typography, and graphic elements.",
+      "i5": "Rules to maintain consistency across all marketing materials.",
+      "i6": "Testing of the visual identity in different contexts.",
+      "i7": "Consulting on how to implement the visual identity across all company areas.",
+      "i8": "1 strategy to ensure compliance with the visual identity over time."
+    },
+    "disenoLogo": {
+      "name": "Logo Design",
+      "desc": "Our graphic design service focuses on creating a distinctive and attractive logo that reflects your brand's personality and values. We provide you with an iconic symbol that will represent your online store and resonate with your customers, ensuring your brand image is unforgettable from the first click."
+    },
+    "disenoPackaging": {
+      "name": "Packaging Design",
+      "desc": "Attractive and functional packaging for your products.",
+      "i1": "Study of the target audience and their preferences.",
+      "i2": "Establishment of packaging goals (differentiation, sustainability, functionality).",
+      "i3": "Design that reflects the brand's essence.",
+      "i4": "Creation of 2 digital prototypes to visualize the final design.",
+      "i5": "Creation of final files ready for print.",
+      "i6": "Delivered in digital format."
+    },
+    "disenoPackagingSost": {
+      "name": "Sustainable Packaging Design",
+      "desc": "Ecological packaging solutions.",
+      "i1": "Study of the target audience and their preferences.",
+      "i2": "Establishment of packaging goals (differentiation, sustainability, functionality).",
+      "i3": "Design that reflects the brand's essence.",
+      "i4": "Designs that minimize material use or are reusable.",
+      "i5": "Creation of 2 digital prototypes to visualize the final design.",
+      "i6": "Creation of final files ready for print.",
+      "i7": "2 Recycling and Reuse Programs.",
+      "i8": "Delivered in digital format."
+    },
+    "disenoPosters": {
+      "name": "Poster Design",
+      "desc": "Stunning posters to promote events and businesses.",
+      "i1": "Clarification of the poster's objective (event promotion, launches, announcements).",
+      "i2": "Creation of a clear and attractive message that captures attention.",
+      "i3": "Inclusion of 2 buttons or messages that invite specific actions (buy tickets, visit a website).",
+      "i4": "Design in different sizes and formats (A3, A2, digital) according to client needs.",
+      "i5": "Preparation of the file for print, ensuring adequate quality and resolution.",
+      "i6": "Delivered in digital format."
+    },
+    "disenoWeb": {
+      "name": "Responsive Web Design",
+      "desc": "Creation of attractive and functional websites that adapt to mobile devices.",
+      "i1": "Competitor analysis and web design best practices.",
+      "i2": "Creation of a sitemap to visualize information hierarchy.",
+      "i3": "Development of a coherent visual design including colors, typography, and graphics.",
+      "i4": "Minification of scripts and CSS to improve performance.",
+      "i5": "Testing on multiple devices and browsers to ensure the design is functional and aesthetically pleasing.",
+      "i6": "Ensuring the site complies with accessibility standards for users with disabilities.",
+      "i7": "Ensuring navigation is intuitive and easy to use across all platforms."
+    },
+    "ecommerce": {
+      "name": "E-commerce",
+      "desc": "Development of online stores with secure payment options.",
+      "i1": "Development of 1 online store with secure payment options.",
+      "i2": "Selection of the appropriate platform (Shopify, WooCommerce, Magento, etc.) according to business needs.",
+      "i3": "Hosting and domain configuration.",
+      "i4": "Creation of an attractive visual design consistent with the brand identity.",
+      "i5": "Integration of secure payment methods (credit cards, PayPal, bank transfers).",
+      "i6": "Development of a functional shopping cart that allows users to add and remove products.",
+      "i7": "Up to 10 products."
+    },
+    "edicionVideo": {
+      "name": "Video Editing",
+      "desc": "Professional video editing to promote your brand.",
+      "i1": "Definition of video objectives (promotional, informational, educational).",
+      "i2": "Development of a script or storyboard detailing the narrative and structure of the video.",
+      "i3": "Filming of new content if necessary (interviews, events, testimonials).",
+      "i4": "Addition of text, titles, and subtitles that reinforce the message.",
+      "i5": "Adaptation of the video to different formats and resolutions according to the platforms where it will be published (YouTube, social media, website).",
+      "i6": "Delivered in digital format."
+    },
+    "emailMarketing": {
+      "name": "Email Marketing",
+      "desc": "Effective email campaigns to build customer loyalty.",
+      "i1": "2 effective email campaigns to build customer loyalty.",
+      "i2": "Delivered in digital format."
+    },
+    "fotografia": {
+      "name": "Product Photography",
+      "desc": "High-quality photographs for your products.",
+      "i1": "10 high-quality photographs for your products.",
+      "i2": "Delivered in digital format."
+    },
+    "gestionRedes": {
+      "name": "Social Media Management",
+      "desc": "We create and manage content for your social media.",
+      "i1": "Definition of objectives (increase visibility, generate leads, improve engagement).",
+      "i2": "Creation of a content calendar detailing what and when to publish.",
+      "i3": "Production of attractive and relevant text, images, videos, and graphics for the target audience.",
+      "i4": "Development of content aligned with brand identity and audience interests.",
+      "i5": "Scheduling of posts using management tools (such as Hootsuite or Buffer).",
+      "i6": "Responding to comments, direct messages, and mentions in a timely manner.",
+      "i7": "Encouraging interaction with followers through questions, polls, and dynamics.",
+      "i8": "Monitoring post performance through key metrics (reach, engagement, clicks).",
+      "i9": "Competitor and industry trend analysis to adjust strategy.",
+      "i10": "Creation and management of 2 advertising campaigns on platforms such as Facebook, Instagram, and LinkedIn.",
+      "i11": "Generation of regular reports showing performance and strategy analysis."
+    },
+    "ilustraciones": {
+      "name": "Custom Illustrations",
+      "desc": "Unique art to highlight your brand.",
+      "i1": "Definition of the objectives and messages the illustration should communicate.",
+      "i2": "Analysis of the brand's identity and visual style.",
+      "i3": "Research of relevant trends and competitors to ensure the illustration stands out.",
+      "i4": "Creation of 4 preliminary sketches and design proposals.",
+      "i5": "Creation of the final illustration based on the approved concept.",
+      "i6": "Provision of the illustration in different formats and resolutions (vector, PNG, JPEG).",
+      "i7": "Inclusion of adapted versions for various platforms (print, web, social media).",
+      "i8": "Agreement on usage rights of the illustration, ensuring the client has the necessary ownership or licenses.",
+      "i9": "Delivered in digital format."
+    },
+    "marketingContenidos": {
+      "name": "Content Marketing",
+      "desc": "Creation of blogs and relevant content to attract traffic.",
+      "i1": "Analysis of the target audience and their interests.",
+      "i2": "Definition of buyer personas to guide content creation.",
+      "i3": "Development of a strategic plan establishing content marketing objectives.",
+      "i4": "Creation of an editorial calendar detailing what, when, and where content will be published.",
+      "i5": "Complete blog.",
+      "i6": "Implementation of on-page SEO practices (keyword usage, meta descriptions, internal links).",
+      "i7": "Optimization of images and content to improve search engine ranking.",
+      "i8": "Publication of content on the company blog and relevant platforms.",
+      "i9": "Updating articles and resources for up to 3 months to maintain their value over time.",
+      "i10": "Training for the internal team on content marketing best practices."
+    },
+    "naming": {
+      "name": "Naming",
+      "desc": "We help you find the perfect name for your business."
+    },
+    "seo": {
+      "name": "Search Engine Optimization",
+      "desc": "We improve your site's visibility in search engines."
+    },
+    "optimizacionVelocidad": {
+      "name": "Speed Optimization",
+      "desc": "We accelerate your website's loading time."
+    },
+    "publicidadRedes": {
+      "name": "Social Media Advertising",
+      "desc": "Targeted advertising campaigns to increase reach.",
+      "i1": "1 targeted advertising campaign to increase your company's reach."
+    },
+    "redisenoWeb": {
+      "name": "Website Redesign",
+      "desc": "Update and improvement of your existing website."
+    }
+  }
+}

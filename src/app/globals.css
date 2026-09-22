@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+:root {
+  --peach: #F5C7B1;
+  --peach-dark: #E89B7A;
+  --peach-light: #FBE4D8;
+  --sage: #D9F0D3;
+  --sage-dark: #B5DFA8;
+  --sage-light: #EAF7E6;
+  --gray: #808080;
+  --gray-light: #B0B0B0;
+  --gray-dark: #4A4A4A;
+  --ink: #1A1A1A;
+  --cream: #FAFAF8;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-silkscreen), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ============ OCULTAR INDICADORES DE DEV DE NEXT.JS ============ */
+/* Fuerza bruta para asegurar que no se vean por ninguna razón */
+nextjs-portal,
+[data-nextjs-toast],
+[data-nextjs-dialog-overlay],
+[data-nextjs-dev-tools-button],
+#__next-build-watcher,
+#next-logo,
+[data-next-badge-root],
+[data-nextjs-dev-tools],
+[aria-label="Next.js Dev Tools"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb {
+  background: var(--peach);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--peach-dark); }
+
+/* ============ UTILIDADES ============ */
+.triangle-clip {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.triangle-clip-right {
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.gradient-peach-sage {
+  background: linear-gradient(135deg, var(--peach-light) 0%, var(--sage-light) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--peach-dark), var(--sage-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animación de scroll suave personalizada */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Bump animation para el contador del carrito */
+@keyframes bump {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.25); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}

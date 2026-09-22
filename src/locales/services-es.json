@@ -1,0 +1,245 @@
+{
+  "services": {
+    "asesoriaEstrategia": {
+      "name": "Asesoría en Estrategia de Marketing",
+      "desc": "Consultoría personalizada para aumentar tus conversiones.",
+      "i1": "Análisis de Mercado",
+      "i2": "Definición de Objetivos",
+      "i3": "Análisis del público objetivo y creación de perfiles de clientes.",
+      "i4": "2 estrategias para atraer y retener a diferentes segmentos.",
+      "i5": "Creación de 5 mensajes clave y propuestas de valor.",
+      "i6": "Recomendaciones sobre los canales de marketing más efectivos (digital, social, tradicional).",
+      "i7": "Sugerencias sobre tipos de contenido (blogs, videos, redes sociales).",
+      "i8": "2 estrategias para optimizar el retorno de inversión (ROI)."
+    },
+    "consultoriaMarca": {
+      "name": "Consultoría de Marca",
+      "desc": "Desarrollamos una estrategia de marca sólida.",
+      "i1": "Análisis de Marca",
+      "i2": "Creación o revisión de misión, visión y valores.",
+      "i3": "Diseño de 2 logotipos y paletas de colores.",
+      "i4": "1 Estrategia para definir la percepción de la marca en el mercado.",
+      "i5": "1 Estrategia para lanzar o relanzar la marca."
+    },
+    "consultoriaUx": {
+      "name": "Consultoría en Experiencia de Usuario (UX)",
+      "desc": "Mejora la usabilidad y la satisfacción del usuario en tu sitio web o aplicación.",
+      "i1": "Investigación de Usuarios",
+      "i2": "Evaluación de la facilidad de uso de un producto existente.",
+      "i3": "Identificación de problemas de usabilidad a través de pruebas con usuarios.",
+      "i4": "Creación de 2 perfiles de usuarios (personas) para representar diferentes segmentos del público objetivo.",
+      "i5": "Desarrollo de 2 prototipos interactivos para pruebas y validación.",
+      "i6": "Sugerencias sobre elementos de interfaz y comportamiento.",
+      "i7": "Asesoría en la integración de cambios en el proceso de desarrollo."
+    },
+    "disenoApps": {
+      "name": "Diseño de App Móvil",
+      "desc": "Desarrollo de aplicaciones móviles personalizadas.",
+      "i1": "Identificación de las necesidades y comportamientos de los usuarios.",
+      "i2": "Especificación de las funcionalidades y características que debe tener la app.",
+      "i3": "Desarrollo de flujos de usuario y arquitectura de la información.",
+      "i4": "Diseño visual de la interfaz, incluyendo colores, tipografías y gráficos.",
+      "i5": "Validación de la navegación y funcionalidad antes del desarrollo.",
+      "i6": "Ejecución de pruebas con usuarios para obtener feedback sobre el diseño.",
+      "i7": "Creación de un manual de estilo que incluya directrices de diseño.",
+      "i8": "Adaptación a las pautas de diseño de plataformas (iOS, Android).",
+      "i9": "Análisis del rendimiento y la experiencia del usuario después del lanzamiento.",
+      "i10": "Recomendaciones para futuras mejoras o actualizaciones."
+    },
+    "disenoBanners": {
+      "name": "Diseño de Banner Web",
+      "desc": "Banners llamativos para tu sitio web o campañas publicitarias.",
+      "f1": "Definición de Tamaño y Formato",
+      "f2": "Diseño Atractivo",
+      "f3": "Llamado a la Acción (CTA)",
+      "f4": "Formato Digital",
+      "f5": "Medición de Rendimiento"
+    },
+    "disenoCamisetas": {
+      "name": "Diseño de Camisetas",
+      "desc": "Diseños únicos para camisetas personalizadas.",
+      "i1": "1 Diseño único para impresión en camiseta, basado en la solicitud del cliente, incluyendo colores personalizados.",
+      "i2": "Se entrega en formato digital."
+    },
+    "disenoCatalogos": {
+      "name": "Diseño de Catálogo Digital",
+      "desc": "Catálogos profesionales para presentar tus productos.",
+      "i1": "Análisis del público objetivo y sus necesidades.",
+      "i2": "Selección de productos o servicios a incluir (Hasta 15 productos).",
+      "i3": "Creación de un índice o tabla de contenidos.",
+      "i4": "Diseño de la portada y contraportada del catálogo.",
+      "i5": "Integración de imágenes de productos de alta calidad.",
+      "i6": "Información de contacto y botones que inviten a realizar acciones (comprar, visitar el sitio web).",
+      "i7": "Incorporación de nuevas ofertas o productos según sea necesario.",
+      "i8": "Preparación del catálogo para impresión (resolución, sangrías) o formato digital (PDF interactivo).",
+      "i9": "Se entrega en formato digital."
+    },
+    "disenoFolletos": {
+      "name": "Diseño de Folleto Digital",
+      "desc": "Diseñamos folletos atractivos para promocionar tus productos o servicios.",
+      "i1": "Identificación del público objetivo y sus necesidades.",
+      "i2": "Redacción de texto claro y conciso.",
+      "i3": "Inclusión de descripciones de productos, servicios o eventos.",
+      "i4": "Datos de contacto y llamados a la acción.",
+      "i5": "Creación de un esquema visual atractivo y fácil de seguir.",
+      "i6": "Selección de imágenes de alta calidad que complementen el contenido.",
+      "i7": "Diseño en un formato que se adapte bien a diferentes dispositivos (PC, tablet, móvil).",
+      "i8": "Se entrega en formato digital."
+    },
+    "disenoIdentidad": {
+      "name": "Diseño de Identidad Visual",
+      "desc": "Creación de elementos visuales cohesivos para tu marca.",
+      "i1": "Análisis de la misión, visión y valores de la marca.",
+      "i2": "Investigación del mercado y competencia.",
+      "i3": "Creación de un logotipo único y reconocible que refleje la esencia de la marca. 2 variantes para elegir.",
+      "i4": "Desarrollo de un manual de identidad visual que incluya directrices sobre el uso del logo, colores, tipografías y elementos gráficos.",
+      "i5": "Reglas para mantener la coherencia en todos los materiales de marketing.",
+      "i6": "Pruebas de la identidad visual en diferentes contextos.",
+      "i7": "Asesoría sobre cómo implementar la identidad visual en todas las áreas de la empresa.",
+      "i8": "1 Estrategia para asegurar el cumplimiento de la identidad visual a lo largo del tiempo."
+    },
+    "disenoLogo": {
+      "name": "Diseño de Logo",
+      "desc": "Nuestro servicio de diseño gráfico se centra en la creación de un logotipo distintivo y atractivo que refleje la personalidad y valores de tu marca. Te proporcionamos un símbolo icónico que representará tu tienda online y resonará con tus clientes, asegurando que tu imagen de marca sea inolvidable desde el primer clic."
+    },
+    "disenoPackaging": {
+      "name": "Diseño de Packaging",
+      "desc": "Envases atractivos y funcionales para tus productos.",
+      "i1": "Estudio del público objetivo y sus preferencias.",
+      "i2": "Establecimiento de los objetivos del packaging (diferenciación, sostenibilidad, funcionalidad).",
+      "i3": "Diseño que refleje la esencia de la marca.",
+      "i4": "Creación de 2 prototipos digitales para visualizar el diseño final.",
+      "i5": "Creación de archivos finales listos para impresión.",
+      "i6": "Se entrega en formato digital."
+    },
+    "disenoPackagingSost": {
+      "name": "Diseño de Packaging Sostenible",
+      "desc": "Soluciones ecológicas para envases.",
+      "i1": "Estudio del público objetivo y sus preferencias.",
+      "i2": "Establecimiento de los objetivos del packaging (diferenciación, sostenibilidad, funcionalidad).",
+      "i3": "Diseño que refleje la esencia de la marca.",
+      "i4": "Diseños que minimicen el uso de material o que sea reutilizable.",
+      "i5": "Creación de 2 prototipos digitales para visualizar el diseño final.",
+      "i6": "Creación de archivos finales listos para impresión.",
+      "i7": "2 Programas de Reciclaje y Reutilización.",
+      "i8": "Se entrega en formato digital."
+    },
+    "disenoPosters": {
+      "name": "Diseño de Póster",
+      "desc": "Posters impresionantes para promocionar eventos y negocios.",
+      "i1": "Clarificación del objetivo del póster (promoción de eventos, lanzamientos, anuncios).",
+      "i2": "Creación de un mensaje claro y atractivo que capte la atención.",
+      "i3": "Inclusión de 2 botones o mensajes que inviten a realizar acciones específicas (comprar entradas, visitar un sitio web).",
+      "i4": "Diseño en diferentes tamaños y formatos (A3, A2, digital) según las necesidades del cliente.",
+      "i5": "Preparación del archivo para impresión, asegurando la calidad y resolución adecuadas.",
+      "i6": "Se entrega en formato digital."
+    },
+    "disenoWeb": {
+      "name": "Diseño Web Responsivo",
+      "desc": "Creación de sitios web atractivos y funcionales que se adaptan a dispositivos móviles.",
+      "i1": "Análisis de la competencia y mejores prácticas en diseño web.",
+      "i2": "Creación de un mapa del sitio para visualizar la jerarquía de la información.",
+      "i3": "Desarrollo de un diseño visual coherente que incluya colores, tipografías y gráficos.",
+      "i4": "Minimización de scripts y CSS para mejorar el rendimiento.",
+      "i5": "Pruebas en múltiples dispositivos y navegadores para asegurar que el diseño sea funcional y estéticamente agradable.",
+      "i6": "Asegurar que el sitio cumpla con estándares de accesibilidad para usuarios con discapacidades.",
+      "i7": "Aseguramiento de que la navegación sea intuitiva y fácil de usar en todas las plataformas."
+    },
+    "ecommerce": {
+      "name": "E-commerce",
+      "desc": "Desarrollo de tiendas en línea con opciones de pago seguras.",
+      "i1": "Desarrollo de 1 tienda en línea con opciones de pago seguras.",
+      "i2": "Selección de la plataforma adecuada (Shopify, WooCommerce, Magento, etc.) según las necesidades del negocio.",
+      "i3": "Configuración del hosting y dominio.",
+      "i4": "Creación de un diseño visual atractivo y coherente con la identidad de la marca.",
+      "i5": "Integración de métodos de pago seguros (tarjetas de crédito, PayPal, transferencias bancarias).",
+      "i6": "Desarrollo de un carrito de compras funcional que permita a los usuarios agregar y eliminar productos.",
+      "i7": "Hasta 10 productos."
+    },
+    "edicionVideo": {
+      "name": "Edición de Video",
+      "desc": "Edición de video profesional para promocionar tu marca.",
+      "i1": "Definición de objetivos del video (promocional, informativo, educativo).",
+      "i2": "Desarrollo de un guion o storyboard que detalle la narrativa y la estructura del video.",
+      "i3": "Filmación de nuevo contenido, si es necesario (entrevistas, eventos, testimonios).",
+      "i4": "Agregación de textos, títulos y subtítulos que refuercen el mensaje.",
+      "i5": "Adaptación del video a diferentes formatos y resoluciones según las plataformas donde se publicará (YouTube, redes sociales, sitio web).",
+      "i6": "Se entrega en formato digital."
+    },
+    "emailMarketing": {
+      "name": "Email Marketing",
+      "desc": "Campañas de email efectivas para fidelizar a tus clientes.",
+      "i1": "2 Campañas de email efectivas para fidelizar a tus clientes.",
+      "i2": "Se entrega en formato digital."
+    },
+    "fotografia": {
+      "name": "Fotografía de Producto",
+      "desc": "Fotografías de alta calidad para tus productos.",
+      "i1": "10 Fotografías de alta calidad para tus productos.",
+      "i2": "Se entrega en formato digital."
+    },
+    "gestionRedes": {
+      "name": "Gestión de Redes Sociales",
+      "desc": "Creamos y gestionamos contenido para tus redes sociales.",
+      "i1": "Definición de objetivos (aumentar la visibilidad, generar leads, mejorar la interacción).",
+      "i2": "Creación de un calendario de contenido que detalle qué y cuándo se publicará.",
+      "i3": "Producción de textos, imágenes, videos y gráficos que sean atractivos y relevantes para el público objetivo.",
+      "i4": "Desarrollo de contenido alineado con la identidad de la marca y los intereses de la audiencia.",
+      "i5": "Programación de publicaciones utilizando herramientas de gestión (como Hootsuite o Buffer).",
+      "i6": "Respuesta a comentarios, mensajes directos y menciones de manera oportuna.",
+      "i7": "Fomento de la interacción con los seguidores mediante preguntas, encuestas y dinámicas.",
+      "i8": "Seguimiento del rendimiento de las publicaciones a través de métricas clave (alcance, engagement, clics).",
+      "i9": "Análisis de la competencia y tendencias del sector para ajustar la estrategia.",
+      "i10": "Creación y gestión de 2 campañas publicitarias en plataformas como Facebook, Instagram y LinkedIn.",
+      "i11": "Generación de informes regulares que muestren el rendimiento y análisis de la estrategia."
+    },
+    "ilustraciones": {
+      "name": "Ilustraciones Personalizadas",
+      "desc": "Arte único para destacar tu marca.",
+      "i1": "Definición de los objetivos y mensajes que la ilustración debe comunicar.",
+      "i2": "Análisis de la identidad de la marca y su estilo visual.",
+      "i3": "Investigación de tendencias relevantes y competencia para asegurar que la ilustración destaque.",
+      "i4": "Creación de 4 bocetos y propuestas de diseño preliminares.",
+      "i5": "Creación de la ilustración final basada en el concepto aprobado.",
+      "i6": "Provisión de la ilustración en diferentes formatos y resoluciones (vector, PNG, JPEG).",
+      "i7": "Inclusión de versiones adaptadas para diversas plataformas (impresión, web, redes sociales).",
+      "i8": "Acuerdo sobre los derechos de uso de la ilustración, asegurando que el cliente tenga la propiedad o las licencias necesarias.",
+      "i9": "Se entrega en formato digital."
+    },
+    "marketingContenidos": {
+      "name": "Marketing de Contenidos",
+      "desc": "Creación de blogs y contenido relevante para atraer tráfico.",
+      "i1": "Análisis del público objetivo y sus intereses.",
+      "i2": "Definición de buyer personas para guiar la creación de contenido.",
+      "i3": "Desarrollo de un plan estratégico que establezca los objetivos del marketing de contenidos.",
+      "i4": "Creación de un calendario editorial que detalle qué, cuándo y dónde se publicará el contenido.",
+      "i5": "Blog completo.",
+      "i6": "Implementación de prácticas de SEO on-page (uso de palabras clave, meta descripciones, enlaces internos).",
+      "i7": "Optimización de imágenes y contenido para mejorar el ranking en motores de búsqueda.",
+      "i8": "Publicación del contenido en el blog de la empresa y en plataformas relevantes.",
+      "i9": "Actualización de artículos y recursos hasta por 3 meses para mantener su valor a lo largo del tiempo.",
+      "i10": "Formación para el equipo interno sobre mejores prácticas de marketing de contenidos."
+    },
+    "naming": {
+      "name": "Naming",
+      "desc": "Te ayudamos a encontrar el nombre perfecto para tu negocio."
+    },
+    "seo": {
+      "name": "Optimización de Motores de Búsqueda",
+      "desc": "Mejoramos la visibilidad de tu sitio en los motores de búsqueda."
+    },
+    "optimizacionVelocidad": {
+      "name": "Optimización de Velocidad",
+      "desc": "Aceleramos el tiempo de carga de tu sitio web."
+    },
+    "publicidadRedes": {
+      "name": "Publicidad en Redes Sociales",
+      "desc": "Campañas publicitarias segmentadas para aumentar el alcance.",
+      "i1": "1 Campaña publicitaria segmentada para aumentar el alcance de tu empresa."
+    },
+    "redisenoWeb": {
+      "name": "Rediseño de Sitio Web",
+      "desc": "Actualización y mejora de tu sitio web existente."
+    }
+  }
+}

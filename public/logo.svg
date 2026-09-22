@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="79.915001mm"
+   viewBox="0 0 210 79.915001"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="dibujo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.48693448"
+     inkscape:cx="431.26952"
+     inkscape:cy="313.18382"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       transform="matrix(0.44397463,0,0,0.44397463,-142.07188,-83.023256)"
+       id="g6">
+      <path
+         d="M 320,367 410.5,187 501,367 Z"
+         fill="#f6c6ad"
+         fill-rule="evenodd"
+         id="path1" />
+      <path
+         d="M 501,367 547.066,306 593,367 Z"
+         fill="#7f7f7f"
+         fill-rule="evenodd"
+         id="path2" />
+      <path
+         d="M 0,50 38.0547,0 76,50 Z"
+         stroke="#7f7f7f"
+         stroke-width="8"
+         stroke-miterlimit="8"
+         fill="none"
+         fill-rule="evenodd"
+         transform="matrix(1,0,0,-1,509,313)"
+         id="path3" />
+      <rect
+         x="593"
+         y="187"
+         width="200"
+         height="180"
+         fill="#d9f2d0"
+         id="rect3" />
+      <text
+         fill="#404040"
+         font-family="Silkscreen, Silkscreen_MSFontService, sans-serif"
+         font-weight="400"
+         font-size="80px"
+         transform="translate(622.418,255)"
+         id="text3">B</text>
+      <text
+         fill="#404040"
+         font-family="Silkscreen, Silkscreen_MSFontService, sans-serif"
+         font-weight="400"
+         font-size="80px"
+         transform="translate(701.084,255)"
+         id="text4">y</text>
+      <text
+         fill="#404040"
+         font-family="Silkscreen, Silkscreen_MSFontService, sans-serif"
+         font-weight="400"
+         font-size="80px"
+         transform="translate(622.418,351)"
+         id="text5">t</text>
+      <text
+         fill="#404040"
+         font-family="Silkscreen, Silkscreen_MSFontService, sans-serif"
+         font-weight="400"
+         font-size="80px"
+         transform="translate(709.751,351)"
+         id="text6">e</text>
+    </g>
+  </g>
+</svg>

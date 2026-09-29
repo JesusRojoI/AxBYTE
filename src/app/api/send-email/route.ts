@@ -22,8 +22,8 @@ interface EmailPayload {
   to: string;
   type: EmailType;
   language: 'es' | 'en';
-  _website?: string; // honeypot
-  _token?: string;   // time-based token
+  _website?: string;
+  _token?: string;
   name?: string;
   company?: string;
   email?: string;
@@ -50,7 +50,6 @@ interface EmailPayload {
  * Respuesta genérica para no dar pistas a atacantes sobre por qué se bloqueó.
  */
 function blockedResponse(status = 200) {
-  // Devolvemos 200 con success:false para no revelar la causa real del bloqueo
   return NextResponse.json(
     { success: false, error: 'Request rejected' },
     { status }
@@ -62,7 +61,7 @@ export async function POST(request: Request) {
     const ip = getClientIP(request);
 
     // ============================================================
-    // CAPA 1: RATE LIMITING (global por IP)
+    // CAPA 1: RATE LIMITING GLOBAL
     // ============================================================
     const globalLimit = checkRateLimit(ip, RATE_LIMITS.global);
     if (!globalLimit.allowed) {
@@ -99,7 +98,7 @@ export async function POST(request: Request) {
     }
 
     // ============================================================
-    // CAPA 4: TIME-BASED VALIDATION
+    // CAPA 4: TIME-BASED TOKEN
     // ============================================================
     const tokenCheck = validateFormToken(body._token);
     if (!tokenCheck.valid) {
@@ -113,10 +112,10 @@ export async function POST(request: Request) {
     // CAPA 5: RATE LIMIT POR TIPO
     // ============================================================
     const typeLimits: Record<EmailType, RateLimitConfig> = {
-  contact: RATE_LIMITS.contact,
-  quote: RATE_LIMITS.quote,
-  purchase: RATE_LIMITS.purchase,
-};
+      contact: RATE_LIMITS.contact,
+      quote: RATE_LIMITS.quote,
+      purchase: RATE_LIMITS.purchase,
+    };
     const typeLimit = checkRateLimit(ip, typeLimits[body.type]);
     if (!typeLimit.allowed) {
       console.warn(
@@ -137,7 +136,7 @@ export async function POST(request: Request) {
     const isEn = language === 'en';
 
     // ============================================================
-    // CAPA 6: VALIDACIÓN DE EMAIL Y CONTENIDO
+    // CAPA 6: VALIDACIÓN DE EMAIL
     // ============================================================
     if (!isValidEmail(to)) {
       return NextResponse.json(
@@ -151,7 +150,7 @@ export async function POST(request: Request) {
       return blockedResponse();
     }
 
-    // Validar contenido sospechoso en mensajes
+    // Validar contenido sospechoso
     if (type === 'contact' && body.message) {
       if (containsSuspiciousContent(body.message)) {
         console.warn(`[SECURITY] Suspicious content from IP ${ip}`);
@@ -171,13 +170,26 @@ export async function POST(request: Request) {
       const phone = sanitizeString(body.phone, 50);
       const message = sanitizeString(body.message, 5000);
 
-      // Validación adicional
       if (!name || !isValidEmail(email)) {
         return NextResponse.json(
           { success: false, error: 'Missing required fields' },
           { status: 400 }
         );
       }
+
+      // Filas condicionales — solo se muestran si tienen contenido
+      const rows = [
+        `<p><strong>${isEn ? 'Name:' : 'Nombre:'}</strong> ${name}</p>`,
+        company
+          ? `<p><strong>${isEn ? 'Company:' : 'Compañía:'}</strong> ${company}</p>`
+          : '',
+        `<p><strong>Email:</strong> ${email}</p>`,
+        phone
+          ? `<p><strong>${isEn ? 'Phone:' : 'Teléfono:'}</strong> ${phone}</p>`
+          : '',
+      ]
+        .filter(Boolean)
+        .join('');
 
       const adminHTML = `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#FAFAF8;border-radius:16px;overflow:hidden;border:1px solid #E5E5E5;">
@@ -187,12 +199,13 @@ export async function POST(request: Request) {
             </h1>
           </div>
           <div style="padding:32px;color:#1A1A1A;">
-            <p><strong>${isEn ? 'Name:' : 'Nombre:'}</strong> ${name}</p>
-            <p><strong>${isEn ? 'Company:' : 'Compañía:'}</strong> ${company || '-'}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>${isEn ? 'Phone:' : 'Teléfono:'}</strong> ${phone || '-'}</p>
-            <p><strong>${isEn ? 'Message:' : 'Mensaje:'}</strong></p>
-            <p style="background:#FFFFFF;padding:16px;border-radius:8px;border:1px solid #E5E5E5;">${message || '-'}</p>
+            ${rows}
+            ${
+              message
+                ? `<p><strong>${isEn ? 'Message:' : 'Mensaje:'}</strong></p>
+                   <p style="background:#FFFFFF;padding:16px;border-radius:8px;border:1px solid #E5E5E5;">${message}</p>`
+                : ''
+            }
             <p style="color:#808080;font-size:12px;margin-top:24px;">
               IP: ${ip} · ${new Date().toISOString()}
             </p>
@@ -312,7 +325,6 @@ export async function POST(request: Request) {
     // COMPRA
     // ============================================================
     if (type === 'purchase' && orderData) {
-      // Validar estructura de la orden
       if (
         !orderData.productos ||
         !Array.isArray(orderData.productos) ||

@@ -46,6 +46,60 @@
     "acceptPayments": "Aceptamos Visa, MasterCard y American Express"
   },
   "home": {
+    "featuredServices": {
+  "graphic": {
+    "title": "Diseño Gráfico",
+    "items": {
+      "logo": { "name": "Diseño de Logo", "desc": "Creamos un logotipo único y memorable para tu marca." },
+      "brochures": { "name": "Diseño de Folletos", "desc": "Diseñamos folletos atractivos para promocionar tus productos o servicios." },
+      "banners": { "name": "Diseño de Banners Web", "desc": "Banners llamativos para tu sitio web o campañas publicitarias." },
+      "illustrations": { "name": "Ilustraciones Personalizadas", "desc": "Arte único para destacar tu marca." }
+    }
+  },
+  "print": {
+    "title": "Diseño de Material Impreso",
+    "items": {
+      "packaging": { "name": "Diseño de Packaging", "desc": "Envases atractivos y funcionales para tus productos." },
+      "tshirts": { "name": "Diseño de Camisetas", "desc": "Diseños únicos para camisetas personalizadas." },
+      "posters": { "name": "Diseño de Posters", "desc": "Posters impresionantes para promocionar eventos y negocios." },
+      "catalogs": { "name": "Diseño de Catálogos", "desc": "Catálogos profesionales para presentar tus productos." }
+    }
+  },
+  "web": {
+    "title": "Diseño de Sitios Web",
+    "items": {
+      "responsive": { "name": "Diseño Web Responsivo", "desc": "Creación de sitios web atractivos y funcionales que se adaptan a dispositivos móviles." },
+      "ecommerce": { "name": "E-commerce", "desc": "Desarrollo de tiendas en línea con opciones de pago seguras." },
+      "redesign": { "name": "Rediseño de Sitio Web", "desc": "Actualización y mejora de tu sitio web existente." },
+      "speed": { "name": "Optimización de Velocidad", "desc": "Aceleramos el tiempo de carga de tu sitio web." }
+    }
+  },
+  "brand": {
+    "title": "Diseño de Marca",
+    "items": {
+      "consulting": { "name": "Consultoría de Marca", "desc": "Desarrollamos una estrategia de marca sólida." },
+      "naming": { "name": "Naming", "desc": "Te ayudamos a encontrar el nombre perfecto para tu negocio." },
+      "identity": { "name": "Diseño de Identidad Visual", "desc": "Creación de elementos visuales cohesivos para tu marca." }
+    }
+  },
+  "marketing": {
+    "title": "Marketing Digital",
+    "items": {
+      "social": { "name": "Gestión de Redes Sociales", "desc": "Creamos y gestionamos contenido para tus redes sociales." },
+      "ads": { "name": "Publicidad en Redes Sociales", "desc": "Campañas publicitarias segmentadas para aumentar el alcance." },
+      "content": { "name": "Marketing de Contenidos", "desc": "Creación de blogs y contenido relevante para atraer tráfico." },
+      "seo": { "name": "Optimización de Motores de Búsqueda (SEO)", "desc": "Mejoramos la visibilidad de tu sitio en los motores de búsqueda." },
+      "email": { "name": "Email Marketing", "desc": "Campañas de email efectivas para fidelizar a tus clientes." }
+    }
+  },
+  "multimedia": {
+    "title": "Producción Multimedia",
+    "items": {
+      "photo": { "name": "Fotografía de Producto", "desc": "Fotografías de alta calidad para tus productos." },
+      "video": { "name": "Edición de Video", "desc": "Edición de video profesional para promocionar tu marca." }
+    }
+  }
+},
     "hero": {
       "title": "AxBYTE Creative Solutions",
       "description": "En AxBYTE Creative Solutions, la excelencia guía cada proyecto. Ya sea un logotipo memorable, un sitio web elegante o una campaña publicitaria exitosa, trabajamos para rebasar tus expectativas y las nuestras.",

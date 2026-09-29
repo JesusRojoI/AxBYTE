@@ -46,6 +46,60 @@
     "acceptPayments": "We accept Visa, MasterCard and American Express"
   },
   "home": {
+    "featuredServices": {
+  "graphic": {
+    "title": "Graphic Design",
+    "items": {
+      "logo": { "name": "Logo Design", "desc": "We create a unique, memorable logo for your brand." },
+      "brochures": { "name": "Brochure Design", "desc": "We design attractive brochures to promote your products or services." },
+      "banners": { "name": "Web Banner Design", "desc": "Eye-catching banners for your website or ad campaigns." },
+      "illustrations": { "name": "Custom Illustrations", "desc": "Unique art to make your brand stand out." }
+    }
+  },
+  "print": {
+    "title": "Print Design",
+    "items": {
+      "packaging": { "name": "Packaging Design", "desc": "Attractive, functional packaging for your products." },
+      "tshirts": { "name": "T-shirt Design", "desc": "Unique designs for custom t-shirts." },
+      "posters": { "name": "Poster Design", "desc": "Striking posters to promote events and businesses." },
+      "catalogs": { "name": "Catalog Design", "desc": "Professional catalogs to showcase your products." }
+    }
+  },
+  "web": {
+    "title": "Website Design",
+    "items": {
+      "responsive": { "name": "Responsive Web Design", "desc": "Attractive, functional websites that adapt to mobile devices." },
+      "ecommerce": { "name": "E-commerce", "desc": "Online stores with secure payment options." },
+      "redesign": { "name": "Website Redesign", "desc": "Update and improve your existing website." },
+      "speed": { "name": "Speed Optimization", "desc": "We speed up your website's loading time." }
+    }
+  },
+  "brand": {
+    "title": "Brand Design",
+    "items": {
+      "consulting": { "name": "Brand Consulting", "desc": "We build a solid brand strategy." },
+      "naming": { "name": "Naming", "desc": "We help you find the perfect name for your business." },
+      "identity": { "name": "Visual Identity Design", "desc": "Cohesive visual elements for your brand." }
+    }
+  },
+  "marketing": {
+    "title": "Digital Marketing",
+    "items": {
+      "social": { "name": "Social Media Management", "desc": "We create and manage content for your social media." },
+      "ads": { "name": "Social Media Advertising", "desc": "Targeted ad campaigns that increase your reach." },
+      "content": { "name": "Content Marketing", "desc": "Blogs and relevant content to attract traffic." },
+      "seo": { "name": "Search Engine Optimization (SEO)", "desc": "We improve your site's visibility in search engines." },
+      "email": { "name": "Email Marketing", "desc": "Effective email campaigns to build customer loyalty." }
+    }
+  },
+  "multimedia": {
+    "title": "Multimedia Production",
+    "items": {
+      "photo": { "name": "Product Photography", "desc": "High-quality photos for your products." },
+      "video": { "name": "Video Editing", "desc": "Professional video editing to promote your brand." }
+    }
+  }
+},
     "hero": {
       "title": "AxBYTE Creative Solutions",
       "description": "At AxBYTE Creative Solutions, excellence drives every project. From memorable logos to elegant websites and successful ad campaigns, we aim to exceed both your expectations and ours.",

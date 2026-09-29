@@ -10,6 +10,7 @@ import { mexicanStates } from '@/data/states';
 import { formatPrice } from '@/lib/utils';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
+import { useFormToken } from '@/lib/form-token';
 
 interface FormState {
   firstName: string;
@@ -30,6 +31,7 @@ interface FormState {
   cardYear: string;
   cardCvv: string;
   acceptTerms: boolean;
+  _website: string; // honeypot
 }
 
 export default function CheckoutClient() {
@@ -37,10 +39,11 @@ export default function CheckoutClient() {
   const tCommon = useTranslations('common');
   const tAll = useTranslations();
   const locale = useLocale();
+  const isEn = locale === 'en';
   const router = useRouter();
   const { items, subtotal, vat, total, clearCart, isHydrated } = useCart();
+  const formToken = useFormToken();
 
-  // 🌟 FLAG: evita que el redirect a /carrito/ se dispare tras clearCart()
   const [completed, setCompleted] = useState(false);
 
   const [form, setForm] = useState<FormState>({
@@ -62,6 +65,7 @@ export default function CheckoutClient() {
     cardYear: '',
     cardCvv: '',
     acceptTerms: false,
+    _website: '',
   });
 
   const [processing, setProcessing] = useState(false);
@@ -72,7 +76,6 @@ export default function CheckoutClient() {
     msg: string;
   }>({ open: false, variant: 'error', title: '', msg: '' });
 
-  // 🌟 No redirigir si ya se completó la compra
   if (!completed && isHydrated && items.length === 0) {
     if (typeof window !== 'undefined') {
       router.push('/carrito/');
@@ -94,21 +97,29 @@ export default function CheckoutClient() {
   const formatCardNumber = (v: string) =>
     v.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
 
-  const isEn = locale === 'en';
-
   const validate = (): string | null => {
-    if (!form.firstName.trim()) return isEn ? 'First name is required' : 'Nombre requerido';
-    if (!form.lastName.trim()) return isEn ? 'Last name is required' : 'Apellidos requeridos';
-    if (!form.address.trim()) return isEn ? 'Address is required' : 'Dirección requerida';
-    if (!form.city.trim()) return isEn ? 'City is required' : 'Ciudad requerida';
+    if (!form.firstName.trim())
+      return isEn ? 'First name is required' : 'Nombre requerido';
+    if (!form.lastName.trim())
+      return isEn ? 'Last name is required' : 'Apellidos requeridos';
+    if (!form.address.trim())
+      return isEn ? 'Address is required' : 'Dirección requerida';
+    if (!form.city.trim())
+      return isEn ? 'City is required' : 'Ciudad requerida';
     if (!/^\d{5}$/.test(form.postalCode))
-      return isEn ? 'Invalid postal code (5 digits)' : 'Código postal inválido (5 dígitos)';
+      return isEn
+        ? 'Invalid postal code (5 digits)'
+        : 'Código postal inválido (5 dígitos)';
     if (!/^\d{10}$/.test(form.phone))
-      return isEn ? 'Invalid phone (10 digits)' : 'Teléfono inválido (10 dígitos)';
+      return isEn
+        ? 'Invalid phone (10 digits)'
+        : 'Teléfono inválido (10 dígitos)';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       return isEn ? 'Invalid email' : 'Correo inválido';
     if (!form.cardName.trim() || form.cardName.length < 3)
-      return isEn ? 'Invalid cardholder name' : 'Nombre en tarjeta inválido';
+      return isEn
+        ? 'Invalid cardholder name'
+        : 'Nombre en tarjeta inválido';
     if (form.cardNumber.replace(/\s/g, '').length !== 16)
       return isEn ? 'Invalid card number' : 'Número de tarjeta inválido';
     if (!/^\d{2}$/.test(form.cardMonth) || Number(form.cardMonth) > 12)
@@ -140,13 +151,15 @@ export default function CheckoutClient() {
       const orderId = `AXB-${Date.now()}`;
 
       // ==================== PASO 1: PAGO ====================
-      const paymentRes = await fetch('/api/payment', {
+      const paymentRes = await fetch('/api/payment/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           amount: total,
           orderId,
           language: locale,
+          _token: formToken,
+          _website: form._website,
           cardData: {
             number: form.cardNumber,
             name: form.cardName,
@@ -190,8 +203,7 @@ export default function CheckoutClient() {
 
       const transactionId = payment.orderId || payment.reference || orderId;
 
-      // ==================== PASO 2: GUARDAR ORDEN ANTES DE LIMPIAR ====================
-      // 🌟 CRÍTICO: guardar en sessionStorage ANTES de clearCart()
+      // ==================== PASO 2: GUARDAR ORDEN ====================
       const orderSnapshot = {
         items: items.map((i) => ({
           ...i,
@@ -206,21 +218,20 @@ export default function CheckoutClient() {
       };
 
       sessionStorage.setItem('axbyte_last_order', JSON.stringify(orderSnapshot));
-      console.log('[Checkout] Order saved to sessionStorage:', orderSnapshot);
 
-      // ==================== PASO 3: MARCAR COMO COMPLETADO ====================
-      // 🌟 CRÍTICO: evitar que el redirect a /carrito/ se dispare
+      // ==================== PASO 3: MARCAR COMPLETADO ====================
       setCompleted(true);
 
-      // ==================== PASO 4: ENVIAR CORREOS (fire & forget) ====================
-      // No bloqueante: enviamos y no esperamos a que termine antes de redirigir
-      fetch('/api/send-email', {
+      // ==================== PASO 4: ENVIAR CORREOS ====================
+      fetch('/api/send-email/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           to: form.email,
           type: 'purchase',
           language: locale,
+          _token: formToken,
+          _website: form._website,
           orderData: {
             nombre: `${form.firstName} ${form.lastName}`,
             apellido: form.lastName,
@@ -238,13 +249,10 @@ export default function CheckoutClient() {
             transactionId,
           },
         }),
-      }).catch((e) => console.error('[Checkout] Email error (non-blocking):', e));
+      }).catch((e) => console.error('[Checkout] Email error:', e));
 
-      // ==================== PASO 5: LIMPIAR CARRITO ====================
+      // ==================== PASO 5: LIMPIAR Y REDIRIGIR ====================
       clearCart();
-
-      // ==================== PASO 6: REDIRIGIR ====================
-      console.log('[Checkout] Redirecting to /compra-exitosa/');
       router.push('/compra-exitosa/');
     } catch (e: any) {
       console.error(e);
@@ -254,7 +262,9 @@ export default function CheckoutClient() {
         title: isEn ? 'Error' : 'Error',
         msg:
           e.message ||
-          (isEn ? 'An unexpected error occurred.' : 'Ocurrió un error inesperado.'),
+          (isEn
+            ? 'An unexpected error occurred.'
+            : 'Ocurrió un error inesperado.'),
       });
       setProcessing(false);
     }
@@ -270,7 +280,31 @@ export default function CheckoutClient() {
           {t('title')}
         </h1>
 
+        {/* Honeypot global (oculto) */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '-9999px',
+            width: '1px',
+            height: '1px',
+            overflow: 'hidden',
+          }}
+          aria-hidden="true"
+        >
+          <label htmlFor="website-hp-checkout">Website</label>
+          <input
+            type="text"
+            id="website-hp-checkout"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form._website}
+            onChange={(e) => set('_website', e.target.value)}
+          />
+        </div>
+
         <div className="grid lg:grid-cols-5 gap-10">
+          {/* FORMULARIO */}
           <div className="lg:col-span-3 space-y-10">
             {/* Facturación */}
             <section className="bg-white rounded-3xl border border-neutralgray/10 p-6 md:p-8">

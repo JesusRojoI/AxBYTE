@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useCart } from '@/context/CartContext';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
+import { useFormToken } from '@/lib/form-token';
 
 export default function CustomizeClient() {
   const t = useTranslations('customize');
@@ -13,10 +14,12 @@ export default function CustomizeClient() {
   const locale = useLocale();
   const isEn = locale === 'en';
   const { addItem } = useCart();
+  const formToken = useFormToken();
 
   const [email, setEmail] = useState('');
   const [quoteId, setQuoteId] = useState('');
   const [amount, setAmount] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [sending, setSending] = useState(false);
   const [modal, setModal] = useState<{
     open: boolean;
@@ -26,14 +29,11 @@ export default function CustomizeClient() {
   }>({ open: false, variant: 'success', title: '', msg: '' });
   const [hideForm, setHideForm] = useState(false);
 
-  // 🌟 Validación con mensajes traducidos
   const validate = (): string | null => {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
       return isEn ? 'Invalid email' : 'Email inválido';
     if (!quoteId.trim())
-      return isEn
-        ? 'Quote ID is required'
-        : 'ID de cotización requerido';
+      return isEn ? 'Quote ID is required' : 'ID de cotización requerido';
     const n = parseFloat(amount);
     if (isNaN(n) || n <= 0)
       return isEn ? 'Invalid amount' : 'Monto inválido';
@@ -60,7 +60,7 @@ export default function CustomizeClient() {
     const subtotal = parseFloat(amount);
 
     try {
-      await fetch('/api/send-email', {
+      await fetch('/api/send-email/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -71,6 +71,8 @@ export default function CustomizeClient() {
           email,
           quoteId,
           amount: subtotal,
+          _token: formToken,
+          _website: honeypot,
         }),
       });
 
@@ -154,7 +156,30 @@ export default function CustomizeClient() {
             {/* Formulario 60% */}
             <div className="lg:col-span-3">
               {!hideForm ? (
-                <div className="bg-white rounded-3xl border border-neutralgray/10 p-8 md:p-10">
+                <div className="bg-white rounded-3xl border border-neutralgray/10 p-8 md:p-10 relative">
+                  {/* Honeypot */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: '-9999px',
+                      width: '1px',
+                      height: '1px',
+                      overflow: 'hidden',
+                    }}
+                    aria-hidden="true"
+                  >
+                    <label htmlFor="website-hp-custom">Website</label>
+                    <input
+                      type="text"
+                      id="website-hp-custom"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
                   <div className="space-y-6">
                     <div>
                       <label className="block text-sm font-semibold text-ink mb-2">

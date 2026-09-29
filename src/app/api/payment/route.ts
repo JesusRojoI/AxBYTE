@@ -1,10 +1,20 @@
 import { NextResponse } from 'next/server';
 import https from 'https';
+import { checkRateLimit, getClientIP, RATE_LIMITS } from '@/lib/rate-limit';
+import {
+  isAllowedOrigin,
+  isHoneypotTripped,
+  validateFormToken,
+  isValidEmail,
+  sanitizeString,
+} from '@/lib/security';
 
 interface PaymentData {
   amount: number;
   orderId: string;
   language?: 'es' | 'en';
+  _website?: string;
+  _token?: string;
   cardData: {
     number: string;
     name: string;
@@ -30,10 +40,6 @@ interface PaymentData {
 
 const API_URL = 'https://pagos.keycop.com.mx/api/v1';
 
-/**
- * Cliente HTTPS con headers de Chrome para pasar CloudFront.
- * Configuración idéntica al test que funcionó en PowerShell.
- */
 function httpsPost(
   path: string,
   body: any,
@@ -53,9 +59,7 @@ function httpsPost(
       Referer: 'https://axbyte.com.mx/',
     };
 
-    if (authToken) {
-      headers['Authorization'] = `Bearer ${authToken}`;
-    }
+    if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
 
     const options: https.RequestOptions = {
       method: 'POST',
@@ -74,15 +78,12 @@ function httpsPost(
       res.on('data', (chunk) => (data += chunk));
       res.on('end', () => {
         console.log(`[HTTPS] ${path} → ${res.statusCode}`);
-        console.log(`[HTTPS] Body:`, data.substring(0, 500));
-
         let parsed: any = null;
         try {
           parsed = JSON.parse(data);
         } catch {
           parsed = { raw: data };
         }
-
         if (res.statusCode && res.statusCode >= 400) {
           reject({
             status: res.statusCode,
@@ -95,10 +96,10 @@ function httpsPost(
       });
     });
 
-   req.on('error', (err: NodeJS.ErrnoException) => {
-  console.error(`[HTTPS ERROR] ${path}:`, err.message, err.code);
-  reject(err);
-});
+    req.on('error', (err: NodeJS.ErrnoException) => {
+      console.error(`[HTTPS ERROR] ${path}:`, err.message, err.code);
+      reject(err);
+    });
 
     req.on('timeout', () => {
       req.destroy();
@@ -111,14 +112,10 @@ function httpsPost(
 }
 
 async function getAuthToken(): Promise<string> {
-  console.log('=== PASO 1: AUTENTICACIÓN ===');
   const data = await httpsPost('/api/v1/signin', {
     email: process.env.KEYCOP_EMAIL,
     password: process.env.KEYCOP_PASSWORD,
   });
-
-  console.log('✓ Auth response:', JSON.stringify(data));
-
   if (!data.authToken) {
     throw new Error(
       data.message ||
@@ -132,24 +129,19 @@ async function tokenizeCard(
   token: string,
   payment: PaymentData
 ): Promise<string> {
-  console.log('=== PASO 2: TOKENIZACIÓN ===');
   const card = payment.cardData;
-
   const data = await httpsPost(
     '/api/v1/card/tokenizer',
     {
       cardData: {
         cardNumber: card.number.replace(/\s/g, ''),
-        cardholderName: card.name,
+        cardholderName: sanitizeString(card.name, 200),
         expirationMonth: card.month,
         expirationYear: card.year,
       },
     },
     token
   );
-
-  console.log('✓ Token response:', JSON.stringify(data));
-
   if (!data.cardNumberToken) {
     throw new Error(data.message || 'No se pudo tokenizar la tarjeta.');
   }
@@ -161,22 +153,20 @@ async function executeSale(
   cardToken: string,
   payment: PaymentData
 ) {
-  console.log('=== PASO 3: VENTA ===');
-
   const salePayload = {
     amount: Number(payment.amount),
     currency: '484',
     reference: payment.orderId,
     customerInformation: {
-      firstName: payment.customer.nombre,
-      lastName: payment.customer.apellido,
-      phone1: payment.customer.telefono,
-      email: payment.customer.email,
-      city: payment.customer.ciudad,
-      address1: payment.customer.direccion,
-      address2: payment.customer.direccion2 || '',
-      postalCode: payment.customer.cp,
-      state: payment.customer.estado,
+      firstName: sanitizeString(payment.customer.nombre, 100),
+      lastName: sanitizeString(payment.customer.apellido, 100),
+      phone1: sanitizeString(payment.customer.telefono, 20),
+      email: sanitizeString(payment.customer.email, 254),
+      city: sanitizeString(payment.customer.ciudad, 100),
+      address1: sanitizeString(payment.customer.direccion, 200),
+      address2: sanitizeString(payment.customer.direccion2 || '', 200),
+      postalCode: sanitizeString(payment.customer.cp, 10),
+      state: sanitizeString(payment.customer.estado, 100),
       country: payment.customer.pais || 'MX',
       ip: payment.metadata?.ip || '127.0.0.1',
     },
@@ -185,63 +175,126 @@ async function executeSale(
       cvv: payment.cardData.cvv,
     },
   };
-
-  const data = await httpsPost('/api/v1/sale', salePayload, token);
-  console.log('✓ Sale response:', JSON.stringify(data));
-  return data;
+  return await httpsPost('/api/v1/sale', salePayload, token);
 }
 
 const ERRORS = {
   es: {
-    credentials:
-      'Credenciales de Keycop no configuradas. Verifica tu archivo .env.local',
+    credentials: 'Credenciales de Keycop no configuradas.',
     invalidAmount: 'Monto inválido',
     incompleteCard: 'Datos de tarjeta incompletos',
-    connectionError:
-      'Error de conexión con el procesador de pagos. Intenta nuevamente en unos minutos.',
-    blocked:
-      'El procesador de pagos rechazó la solicitud. Contacta a soporte técnico.',
+    connectionError: 'Error de conexión con el procesador de pagos. Intenta nuevamente en unos minutos.',
+    blocked: 'El procesador de pagos rechazó la solicitud. Contacta a soporte técnico.',
     generic: 'Error procesando el pago. Verifica los datos de tu tarjeta.',
     timeout: 'El servidor de pagos no responde. Intenta nuevamente.',
     network: 'Error de red al conectar con el procesador de pagos.',
-    authFailed:
-      'Credenciales de Keycop inválidas. Contacta al administrador.',
+    authFailed: 'Credenciales de Keycop inválidas. Contacta al administrador.',
+    rateLimited: 'Demasiados intentos. Espera unos minutos antes de intentar de nuevo.',
   },
   en: {
-    credentials:
-      'Keycop credentials not configured. Check your .env.local file.',
+    credentials: 'Keycop credentials not configured.',
     invalidAmount: 'Invalid amount',
     incompleteCard: 'Incomplete card data',
-    connectionError:
-      'Connection error with the payment processor. Please try again in a few minutes.',
-    blocked:
-      'The payment processor rejected the request. Contact technical support.',
+    connectionError: 'Connection error with the payment processor. Please try again in a few minutes.',
+    blocked: 'The payment processor rejected the request. Contact technical support.',
     generic: 'Error processing payment. Please verify your card details.',
     timeout: 'The payment server is not responding. Please try again.',
     network: 'Network error connecting to the payment processor.',
     authFailed: 'Invalid Keycop credentials. Contact the administrator.',
+    rateLimited: 'Too many attempts. Please wait a few minutes before trying again.',
   },
 };
 
-export async function POST(request: Request) {
-  console.log('========================================');
-  console.log('=== INICIO DE PROCESO DE PAGO ===');
-  console.log('========================================');
+function blockedResponse(status = 200) {
+  return NextResponse.json(
+    { success: false, status: 'error', error: 'Request rejected' },
+    { status }
+  );
+}
 
+export async function POST(request: Request) {
   let lang: 'es' | 'en' = 'es';
 
   try {
+    const ip = getClientIP(request);
+
+    // ============================================================
+    // SEGURIDAD: Rate limit global
+    // ============================================================
+    const globalLimit = checkRateLimit(ip, RATE_LIMITS.global);
+    if (!globalLimit.allowed) {
+      console.warn(`[SECURITY] Payment global rate limit exceeded: ${ip}`);
+      return NextResponse.json(
+        {
+          success: false,
+          status: 'error',
+          error: ERRORS[lang].rateLimited,
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': Math.ceil(globalLimit.resetIn / 1000).toString(),
+          },
+        }
+      );
+    }
+
+    // ============================================================
+    // SEGURIDAD: Origin check
+    // ============================================================
+    if (!isAllowedOrigin(request)) {
+      console.warn(`[SECURITY] Payment invalid origin: ${ip}`);
+      return blockedResponse();
+    }
+
     const body: PaymentData = await request.json();
     lang = body.language === 'en' ? 'en' : 'es';
     const E = ERRORS[lang];
 
+    // ============================================================
+    // SEGURIDAD: Honeypot
+    // ============================================================
+    if (isHoneypotTripped(body)) {
+      console.warn(`[SECURITY] Payment honeypot tripped: ${ip}`);
+      return blockedResponse();
+    }
+
+    // ============================================================
+    // SEGURIDAD: Time-based token
+    // ============================================================
+    const tokenCheck = validateFormToken(body._token);
+    if (!tokenCheck.valid) {
+      console.warn(`[SECURITY] Payment invalid token: ${tokenCheck.reason} from ${ip}`);
+      return blockedResponse();
+    }
+
+    // ============================================================
+    // SEGURIDAD: Rate limit de pagos (más estricto)
+    // ============================================================
+    const paymentLimit = checkRateLimit(ip, RATE_LIMITS.payment);
+    if (!paymentLimit.allowed) {
+      console.warn(`[SECURITY] Payment rate limit exceeded: ${ip}`);
+      return NextResponse.json(
+        { success: false, status: 'error', error: E.rateLimited },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': Math.ceil(paymentLimit.resetIn / 1000).toString(),
+          },
+        }
+      );
+    }
+
+    // ============================================================
+    // VALIDACIONES DE NEGOCIO
+    // ============================================================
     if (!process.env.KEYCOP_EMAIL || !process.env.KEYCOP_PASSWORD) {
       return NextResponse.json(
         { success: false, error: E.credentials },
         { status: 500 }
       );
     }
-    if (!body.amount || body.amount <= 0) {
+    if (!body.amount || body.amount <= 0 || body.amount > 1_000_000) {
       return NextResponse.json(
         { success: false, error: E.invalidAmount },
         { status: 400 }
@@ -253,11 +306,17 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+    if (!isValidEmail(body.customer?.email || '')) {
+      return NextResponse.json(
+        { success: false, error: E.generic },
+        { status: 400 }
+      );
+    }
 
     // 1. Auth
     const authToken = await getAuthToken();
 
-    // 2. Tokenize card
+    // 2. Tokenize
     const cardToken = await tokenizeCard(authToken, body);
 
     // 3. Sale
@@ -281,19 +340,11 @@ export async function POST(request: Request) {
     console.error('Message:', error.message);
     console.error('Code:', error.code);
     console.error('Status:', error.status);
-    if (error.response) {
-      console.error('Data:', JSON.stringify(error.response.data));
-    }
 
     const E = ERRORS[lang];
     let userMessage = E.generic;
 
-    // Error específico de credenciales
-    if (
-      error.message?.includes('authToken') ||
-      error.message?.includes('E-mail/password incorrect') ||
-      error.response?.data?.message?.includes('password')
-    ) {
+    if (error.message?.includes('authToken') || error.message?.includes('password')) {
       userMessage = E.authFailed;
     } else if (error.status === 403 || error.message?.includes('403')) {
       userMessage = E.blocked;

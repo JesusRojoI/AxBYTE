@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
+import { useFormToken } from '@/lib/form-token';
 
 export default function ContactClient() {
   const t = useTranslations('contact');
@@ -12,12 +13,14 @@ export default function ContactClient() {
   const tCommon = useTranslations('common');
   const locale = useLocale();
   const isEn = locale === 'en';
+  const formToken = useFormToken();
 
   const [form, setForm] = useState({
     name: '',
     lastName: '',
     email: '',
     message: '',
+    _website: '', // honeypot
   });
   const [sending, setSending] = useState(false);
   const [modal, setModal] = useState<{
@@ -30,10 +33,8 @@ export default function ContactClient() {
   const set = <K extends keyof typeof form>(k: K, v: string) =>
     setForm((f) => ({ ...f, [k]: v }));
 
-  // 🌟 Validaciones traducidas
   const validate = (): string | null => {
-    if (!form.name.trim())
-      return isEn ? 'Name is required' : 'Nombre requerido';
+    if (!form.name.trim()) return isEn ? 'Name is required' : 'Nombre requerido';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       return isEn ? 'Invalid email' : 'Email inválido';
     return null;
@@ -53,7 +54,7 @@ export default function ContactClient() {
 
     setSending(true);
     try {
-      const res = await fetch('/api/send-email', {
+      const res = await fetch('/api/send-email/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -65,6 +66,8 @@ export default function ContactClient() {
           email: form.email,
           phone: '',
           message: form.message,
+          _token: formToken,
+          _website: form._website,
         }),
       });
       const data = await res.json();
@@ -75,7 +78,7 @@ export default function ContactClient() {
           title: t('formSuccessTitle'),
           msg: t('formSuccessMsg'),
         });
-        setForm({ name: '', lastName: '', email: '', message: '' });
+        setForm({ name: '', lastName: '', email: '', message: '', _website: '' });
       } else {
         throw new Error(data.error);
       }
@@ -130,7 +133,7 @@ export default function ContactClient() {
         </div>
       </section>
 
-      {/* ============ SECCIÓN 2 — TARJETAS DE CONTACTO ============ */}
+      {/* ============ SECCIÓN 2 — TARJETAS ============ */}
       <section className="relative py-20 md:py-24 bg-white overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8">
@@ -181,6 +184,29 @@ export default function ContactClient() {
 
         <div className="relative max-w-[900px] mx-auto px-6">
           <div className="bg-white rounded-3xl border border-neutralgray/10 p-8 md:p-12">
+            {/* Honeypot - invisible para humanos */}
+            <div
+              style={{
+                position: 'absolute',
+                left: '-9999px',
+                width: '1px',
+                height: '1px',
+                overflow: 'hidden',
+              }}
+              aria-hidden="true"
+            >
+              <label htmlFor="website-hp">Website</label>
+              <input
+                type="text"
+                id="website-hp"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form._website}
+                onChange={(e) => set('_website', e.target.value)}
+              />
+            </div>
+
             <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>

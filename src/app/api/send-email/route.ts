@@ -225,7 +225,8 @@ export async function POST(request: Request) {
           <div style="padding:32px;color:#1A1A1A;">
             <p>${isEn ? `Hello <strong>${name}</strong>,` : `Hola <strong>${name}</strong>,`}</p>
             <p>${isEn ? 'We received your message and will get in touch with you soon.' : 'Recibimos tu mensaje y nos pondremos en contacto contigo pronto.'}</p>
-            <p style="color:#808080;margin-top:24px;">AxBYTE Creative Solutions - soluciones@axbyte.com.mx</p>
+            <p style="margin-top:24px;"><strong>${isEn ? 'Your email:' : 'Su correo:'}</strong> ${email}</p>
+            <p style="color:#808080;margin-top:16px;">AxBYTE Creative Solutions - soluciones@axbyte.com.mx</p>
           </div>
         </div>`;
 
@@ -363,6 +364,7 @@ export async function POST(request: Request) {
               ${isEn ? `Hello <strong>${orderData.nombre}</strong>,` : `Hola <strong>${orderData.nombre}</strong>,`}
             </p>
             <p>${isEn ? 'Your order went through successfully.' : 'Tu pedido se procesó correctamente.'}</p>
+            <p style="margin:12px 0;"><strong>${isEn ? 'Your email:' : 'Su correo:'}</strong> ${sanitizeString(orderData.email, 254)}</p>
             <h2 style="font-size:18px;border-bottom:2px solid #F5C7B1;padding-bottom:8px;">
               ${isEn ? 'Order Summary' : 'Resumen de tu pedido'}
             </h2>

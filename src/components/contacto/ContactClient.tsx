@@ -324,17 +324,7 @@ export default function ContactClient() {
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-sage/30 rounded-xl flex items-center justify-center shrink-0">
-                    <i className="bi bi-clock-fill text-sage-dark text-xl" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-ink mb-1">
-                      {t('hours')}
-                    </h3>
-                    <p className="text-ink/70 text-sm">{t('hoursTime')}</p>
-                  </div>
-                </div>
+                
               </div>
             </div>
 

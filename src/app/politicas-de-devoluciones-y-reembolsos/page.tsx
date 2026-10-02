@@ -13,21 +13,19 @@ export default function PoliticasPage() {
 
       <h2>{t('defTitle')}</h2>
       <p>
-        <strong>{t('client').split(':')[0]}:</strong>
-        {t('client').substring(t('client').indexOf(':') + 1)}
+        <strong>{t('client').split(':')[0]}:</strong>{' '}
+        {t('client').split(':').slice(1).join(':').trim()}
       </p>
       <p>
-        <strong>{t('provider').split(':')[0]}:</strong>
-        {t('provider').substring(t('provider').indexOf(':') + 1)}
+        <strong>{t('provider').split(':')[0]}:</strong>{' '}
+        {t('provider').split(':').slice(1).join(':').trim()}
       </p>
 
       <p>{t('readCarefully')}</p>
-
       <p>{t('item1')}</p>
       <p>{t('item2')}</p>
       <p>{t('item3')}</p>
       <p>{t('item4')}</p>
-
       <p>{t('intro2')}</p>
 
       <h2>{t('returnsTitle')}</h2>
